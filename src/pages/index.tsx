@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 
-import { Button, Container, Input, Title } from '@mantine/core'
+import { Button, Container, Input, Title, Divider } from '@mantine/core';
 import {
   useAccessToken,
   useAuthenticated,
@@ -11,8 +11,7 @@ import {
 } from '@nhost/nextjs'
 
 import { authProtected } from '../components/protected-route'
-import { nhost } from '../utils/nhost'
-// import { BOOKS_QUERY } from '../helpers'
+import { useQuery } from '../gqty'
 
 // * Reference: https://blog.codepen.io/2021/09/01/331-next-js-apollo-server-side-rendering-ssr/
 
@@ -26,6 +25,19 @@ const Home: NextPage = () => {
   const { signOut } = useSignOut()
   const { changeEmail, ...changeEmailResult } = useChangeEmail()
   const { changePassword, ...changePasswordResult } = useChangePassword()
+
+  const query = useQuery({
+    // boolean | undefined
+    suspense: true,
+
+    // boolean | object | number | string | null
+    // If you put an object to trigger re-validation on-demand, it should be a `memoized` value from `useMemo`
+    staleWhileRevalidate: true,
+
+    // ((error: GQtyError) => void) | undefined
+    onError(error) {},
+  });
+
   return (
     <Container>
       <Title>Index page</Title>
@@ -51,6 +63,10 @@ const Home: NextPage = () => {
           ))}
         </ul>
       )} */}
+      <div>
+      USERS:
+      {query.users().map(user => <Suspense fallback="Loading..."><div key={user.id ?? 0}>{user.email}</div></Suspense>)}
+      </div>
     </Container>
   )
 }

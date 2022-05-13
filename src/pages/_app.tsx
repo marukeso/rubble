@@ -6,11 +6,10 @@ import { NotificationsProvider } from '@mantine/notifications'
 import { NhostClient, NhostNextProvider } from '@nhost/nextjs'
 
 import NavBar from '../components/NavBar'
-import { BACKEND_URL } from '../helpers'
 
 import '../styles/globals.css'
 
-const nhost = new NhostClient({ backendUrl: BACKEND_URL })
+const nhost = new NhostClient({ backendUrl: process.env.NEXT_PUBLIC_BACKEND_URL as string })
 const title = 'Nhost with NextJs'
 function MyApp({ Component, pageProps }: AppProps) {
   return (
