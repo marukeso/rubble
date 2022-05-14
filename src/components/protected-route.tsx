@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router'
 
 import { useAuthenticationStatus } from '@nhost/nextjs'
+import { FC } from 'react'
 
-export function authProtected(Comp) {
-  return function AuthProtected(props) {
+export function authProtected(Comp: FC) {
+  return function AuthProtected(props: any) {
     const router = useRouter()
     const { isLoading, isAuthenticated } = useAuthenticationStatus()
     console.log('Authentication guard: check auth status', { isLoading, isAuthenticated })

@@ -44,11 +44,11 @@ const Home: NextPage = () => {
       {isAuthenticated ? (
         <>
           <Button onClick={signOut}>Logout</Button>
-          <Input value={newEmail} onChange={(e) => setNewEmail(e.target.value)} />
+          <Input value={newEmail} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewEmail(e.target.value)} />
           <Button onClick={() => changeEmail(email)}>Change email</Button>
           <div>{JSON.stringify(changeEmailResult)}</div>
           <Button onClick={() => changePassword(password)}>Change password</Button>
-          <Input value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
+          <Input value={newPassword} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewPassword(e.target.value)} />
           <div>{JSON.stringify(changePasswordResult)}</div>
         </>
       ) : (

@@ -15,7 +15,7 @@ export const SignUpPasswordlessForm: React.FC = () => {
       showNotification({
         color: 'red',
         title: 'Error',
-        message: result.error.message
+        message: result?.error?.message
       })
     } else {
       setEmailVerificationToggle(true)

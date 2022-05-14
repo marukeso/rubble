@@ -20,7 +20,7 @@ export const SignInPasswordPage: NextPage = () => {
       showNotification({
         color: 'red',
         title: 'Error',
-        message: result.error.message
+        message: result?.error?.message
       })
     } else if (result.needsEmailVerification) {
       showNotification({

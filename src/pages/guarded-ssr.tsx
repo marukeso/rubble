@@ -14,7 +14,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
-const RefetchPage: React.FC<{ initial: NhostSession }> = () => {
+const RefetchPage: React.FC = () => {
   const accessToken = useAccessToken()
   return (
     <Container>
