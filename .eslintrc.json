@@ -1,0 +1,48 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": ["next", "next/core-web-vitals", "prettier"],
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "plugins": ["import", "unused-imports"],
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          ["parent", "sibling"],
+          "object",
+          "type",
+          "index"
+        ],
+        "newlines-between": "always",
+        "pathGroupsExcludedImportTypes": ["builtin"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "pathGroups": [
+          {
+            "pattern": "@/src/components/common",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "@/src/components/hooks",
+            "group": "internal",
+            "position": "before"
+          }
+        ]
+      }
+    ],
+    "unused-imports/no-unused-imports": "error"
+  }
+}

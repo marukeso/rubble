@@ -1,11 +1,12 @@
-import { useState } from 'react'
-
 import { Button, Modal, SimpleGrid, TextInput } from '@mantine/core'
 import { showNotification } from '@mantine/notifications'
 import { useSignInEmailPasswordless } from '@nhost/nextjs'
+import { useState } from 'react'
 
 export const SignUpPasswordlessForm: React.FC = () => {
-  const { signInEmailPasswordless } = useSignInEmailPasswordless({ redirectTo: '/guarded-ssr' })
+  const { signInEmailPasswordless } = useSignInEmailPasswordless({
+    redirectTo: '/guarded-ssr',
+  })
   const [emailVerificationToggle, setEmailVerificationToggle] = useState(false)
 
   const [email, setEmail] = useState('')
@@ -15,7 +16,7 @@ export const SignUpPasswordlessForm: React.FC = () => {
       showNotification({
         color: 'red',
         title: 'Error',
-        message: result?.error?.message
+        message: result?.error?.message,
       })
     } else {
       setEmailVerificationToggle(true)
@@ -31,9 +32,10 @@ export const SignUpPasswordlessForm: React.FC = () => {
           setEmailVerificationToggle(false)
         }}
       >
-        A verification email has been sent. Please check your inbox and follow the link to complete
-        authentication. This page will automatically redirect you to the authenticated home page
-        once the email has been verified.
+        A verification email has been sent. Please check your inbox and follow
+        the link to complete authentication. This page will automatically
+        redirect you to the authenticated home page once the email has been
+        verified.
       </Modal>
       <TextInput
         type="email"

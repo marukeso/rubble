@@ -1,11 +1,13 @@
-import Link from 'next/link'
-
 import { Anchor, Center, Text } from '@mantine/core'
 import { useSignInAnonymous } from '@nhost/nextjs'
+import Link from 'next/link'
 
 import AuthLayout from './AuthLayout'
 
-export const SignInLayout: React.FC<{ title?: string; children: React.ReactNode }> = (props) => {
+export const SignInLayout: React.FC<{
+  title?: string
+  children: React.ReactNode
+}> = (props) => {
   const { signInAnonymous } = useSignInAnonymous()
   const signIn = async () => {
     await signInAnonymous()

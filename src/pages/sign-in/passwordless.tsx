@@ -1,6 +1,5 @@
-import { NextPage } from 'next'
-
 import { Divider } from '@mantine/core'
+import { NextPage } from 'next'
 
 import AuthLink from '../../components/AuthLink'
 import SignUpPasswordlessForm from '../../components/SignUpServerlessForm'

@@ -1,14 +1,13 @@
-import Link from 'next/link'
-
 import { Container, Title } from '@mantine/core'
+import Link from 'next/link'
 
 export const AboutPage: React.FC = () => {
   return (
     <Container>
       <Title>About this example</Title>
       <p>
-        This application demonstrates how to create a NextJs frontend that works with the Nhost
-        stack .
+        This application demonstrates how to create a NextJs frontend that works
+        with the Nhost stack .
       </p>
       <div>
         Nhost cloud leverages the following services in the backend:

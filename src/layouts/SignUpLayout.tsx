@@ -1,10 +1,12 @@
-import Link from 'next/link'
-
 import { Anchor, Center, Text } from '@mantine/core'
+import Link from 'next/link'
 
 import AuthLayout from './AuthLayout'
 
-export const SignUpLayout: React.FC<{ title?: string; children: React.ReactNode }> = (props) => {
+export const SignUpLayout: React.FC<{
+  title?: string
+  children: React.ReactNode
+}> = (props) => {
   return (
     <AuthLayout
       {...props}

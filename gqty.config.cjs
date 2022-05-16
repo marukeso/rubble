@@ -3,16 +3,16 @@
  */
 const config = {
   react: true,
-  scalarTypes: { DateTime: "string" },
+  scalarTypes: { DateTime: 'string' },
   introspection: {
-    endpoint: "http://localhost:9299/v1/graphql",
+    endpoint: 'http://localhost:9299/v1/graphql',
     headers: {
-      "x-hasura-admin-secret": "nhost-admin-secret",
+      'x-hasura-admin-secret': 'nhost-admin-secret',
     },
   },
-  destination: "./src/gqty/index.ts",
+  destination: './src/gqty/index.ts',
   subscriptions: false,
   javascriptOutput: false,
-};
+}
 
-module.exports = config;
+module.exports = config

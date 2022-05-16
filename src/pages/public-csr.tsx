@@ -1,7 +1,6 @@
-import { NextPage } from 'next'
-
 import { Container, Title } from '@mantine/core'
 import { useAccessToken, useAuthenticated } from '@nhost/nextjs'
+import { NextPage } from 'next'
 
 const PublicSSRPage: NextPage = () => {
   const isAuthenticated = useAuthenticated()

@@ -1,6 +1,5 @@
-import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa'
-
 import { useProviderLink } from '@nhost/react'
+import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa'
 
 import AuthLink from './AuthLink'
 

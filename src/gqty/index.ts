@@ -2,24 +2,24 @@
  * GQTY: You can safely modify this file and Query Fetcher based on your needs
  */
 
-import { createReactClient } from "@gqty/react";
+import { createReactClient } from '@gqty/react'
+import { createClient } from 'gqty'
 
-import type { QueryFetcher } from "gqty";
-import { createClient } from "gqty";
-import { nhost } from "../utils/nhost";
+import { nhost } from '../utils/nhost'
+import { generatedSchema, scalarsEnumsHash } from './schema.generated'
+
 import type {
   GeneratedSchema,
   SchemaObjectTypes,
   SchemaObjectTypesNames,
-} from "./schema.generated";
-import { generatedSchema, scalarsEnumsHash } from "./schema.generated";
+} from './schema.generated'
+import type { QueryFetcher } from 'gqty'
 
 const queryFetcher: QueryFetcher = async function (
   query,
   variables,
   fetchOptions
 ) {
-
   const authHeaders = () => {
     if (!nhost.auth.isAuthenticated) {
       return
@@ -30,24 +30,27 @@ const queryFetcher: QueryFetcher = async function (
   }
 
   // Modify "/api/graphql" if needed
-  const response = await fetch(process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT as string, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...authHeaders(),
-    },
-    body: JSON.stringify({
-      query,
-      variables,
-    }),
-    mode: "cors",
-    ...fetchOptions,
-  });
+  const response = await fetch(
+    process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT as string,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...authHeaders(),
+      },
+      body: JSON.stringify({
+        query,
+        variables,
+      }),
+      mode: 'cors',
+      ...fetchOptions,
+    }
+  )
 
-  const json = await response.json();
+  const json = await response.json()
 
-  return json;
-};
+  return json
+}
 
 export const client = createClient<
   GeneratedSchema,
@@ -57,12 +60,12 @@ export const client = createClient<
   schema: generatedSchema,
   scalarsEnumsHash,
   queryFetcher,
-});
+})
 
 const { query, mutation, mutate, subscription, resolved, refetch, track } =
-  client;
+  client
 
-export { query, mutation, mutate, subscription, resolved, refetch, track };
+export { query, mutation, mutate, subscription, resolved, refetch, track }
 
 const {
   graphql,
@@ -85,7 +88,7 @@ const {
     // Set this flag based on your needs
     staleWhileRevalidate: false,
   },
-});
+})
 
 export {
   graphql,
@@ -99,6 +102,6 @@ export {
   prepareReactRender,
   useHydrateCache,
   prepareQuery,
-};
+}
 
-export * from "./schema.generated";
+export * from './schema.generated'

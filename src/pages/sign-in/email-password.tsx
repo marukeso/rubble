@@ -1,10 +1,15 @@
+import {
+  Button,
+  Divider,
+  PasswordInput,
+  SimpleGrid,
+  TextInput,
+} from '@mantine/core'
+import { showNotification } from '@mantine/notifications'
+import { useSignInEmailPassword } from '@nhost/nextjs'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-
-import { Button, Divider, PasswordInput, SimpleGrid, TextInput } from '@mantine/core'
-import { showNotification } from '@mantine/notifications'
-import { useSignInEmailPassword } from '@nhost/nextjs'
 
 import AuthLink from '../../components/AuthLink'
 import SignInLayout from '../../layouts/SignInLayout'
@@ -20,14 +25,14 @@ export const SignInPasswordPage: NextPage = () => {
       showNotification({
         color: 'red',
         title: 'Error',
-        message: result?.error?.message
+        message: result?.error?.message,
       })
     } else if (result.needsEmailVerification) {
       showNotification({
         color: 'red',
         title: 'Error',
         message:
-          'You need to verify your email first. Please check your mailbox and follow the confirmation link to complete the registration.'
+          'You need to verify your email first. Please check your mailbox and follow the confirmation link to complete the registration.',
       })
     } else {
       router.replace('/')

@@ -1,10 +1,16 @@
+import {
+  Button,
+  Divider,
+  Modal,
+  PasswordInput,
+  SimpleGrid,
+  TextInput,
+} from '@mantine/core'
+import { showNotification } from '@mantine/notifications'
+import { useSignUpEmailPassword } from '@nhost/nextjs'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useMemo, useState } from 'react'
-
-import { Button, Divider, Modal, PasswordInput, SimpleGrid, TextInput } from '@mantine/core'
-import { showNotification } from '@mantine/notifications'
-import { useSignUpEmailPassword } from '@nhost/nextjs'
 
 import AuthLink from '../../components/AuthLink'
 import SignUpLayout from '../../layouts/SignUpLayout'
@@ -17,7 +23,10 @@ export const SignUpPasswordPage: NextPage = () => {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [emailVerificationToggle, setEmailVerificationToggle] = useState(false)
   const differentPassword = useMemo(
-    () => password && password !== confirmPassword && 'Should match the given password',
+    () =>
+      password &&
+      password !== confirmPassword &&
+      'Should match the given password',
     [password, confirmPassword]
   )
   const signUp = async () => {
@@ -26,7 +35,7 @@ export const SignUpPasswordPage: NextPage = () => {
       showNotification({
         color: 'red',
         title: 'Error',
-        message: result?.error?.message
+        message: result?.error?.message,
       })
     } else if (result.needsEmailVerification) {
       setEmailVerificationToggle(true)
@@ -46,8 +55,8 @@ export const SignUpPasswordPage: NextPage = () => {
           setEmailVerificationToggle(false)
         }}
       >
-        A email has been sent to {email}. Please follow the link to verify your email address and to
-        complete your registration.
+        A email has been sent to {email}. Please follow the link to verify your
+        email address and to complete your registration.
       </Modal>
       <SimpleGrid cols={1} spacing={6}>
         <TextInput

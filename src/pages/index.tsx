@@ -1,17 +1,17 @@
-import type { NextPage } from 'next'
-import { Suspense, useState } from 'react'
-
-import { Button, Container, Input, Title, Divider } from '@mantine/core';
+import { Button, Container, Input, Title } from '@mantine/core'
 import {
   useAccessToken,
   useAuthenticated,
   useChangeEmail,
   useChangePassword,
-  useSignOut
+  useSignOut,
 } from '@nhost/nextjs'
+import { Suspense, useState } from 'react'
 
 import { authProtected } from '../components/protected-route'
 import { useQuery } from '../gqty'
+
+import type { NextPage } from 'next'
 
 // * Reference: https://blog.codepen.io/2021/09/01/331-next-js-apollo-server-side-rendering-ssr/
 
@@ -36,7 +36,7 @@ const Home: NextPage = () => {
 
     // ((error: GQtyError) => void) | undefined
     onError(error) {},
-  });
+  })
 
   return (
     <Container>
@@ -44,11 +44,23 @@ const Home: NextPage = () => {
       {isAuthenticated ? (
         <>
           <Button onClick={signOut}>Logout</Button>
-          <Input value={newEmail} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewEmail(e.target.value)} />
+          <Input
+            value={newEmail}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setNewEmail(e.target.value)
+            }
+          />
           <Button onClick={() => changeEmail(email)}>Change email</Button>
           <div>{JSON.stringify(changeEmailResult)}</div>
-          <Button onClick={() => changePassword(password)}>Change password</Button>
-          <Input value={newPassword} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewPassword(e.target.value)} />
+          <Button onClick={() => changePassword(password)}>
+            Change password
+          </Button>
+          <Input
+            value={newPassword}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setNewPassword(e.target.value)
+            }
+          />
           <div>{JSON.stringify(changePasswordResult)}</div>
         </>
       ) : (
@@ -64,8 +76,12 @@ const Home: NextPage = () => {
         </ul>
       )} */}
       <div>
-      USERS:
-      {query.users().map(user => <Suspense fallback="Loading..."><div key={user.id ?? 0}>{user.email}</div></Suspense>)}
+        USERS:
+        <Suspense fallback="Loading...">
+          {query.users().map((user) => (
+            <div key={user.id ?? 0}>{user.email}</div>
+          ))}
+        </Suspense>
       </div>
     </Container>
   )
