@@ -45,3 +45,4 @@ pre-commit の修正
 package.json script 追加
 
 storybook 設定
+gh-pages ブランチを作成して storybook を配置
