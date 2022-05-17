@@ -12,7 +12,7 @@
     "prepare": "husky install",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o public/_storybook"
+    "build-storybook": "build-storybook -o build"
   },
   "dependencies": {
     "@gqty/react": "^2.1.0",
