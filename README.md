@@ -43,3 +43,5 @@ yarn add -D husky lint-staged
 npx husky-init
 pre-commit の修正
 package.json script 追加
+
+storybook 設定
