@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && yarn build-storybook",
     "start": "next start",
     "lint": "next lint",
     "generate": "gqty generate",
     "format": "prettier --write .",
     "prepare": "husky install",
-    "test": "jest"
+    "test": "jest",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook -o public/_storybook"
   },
   "dependencies": {
     "@gqty/react": "^2.1.0",
@@ -30,17 +32,28 @@
     "react-icons": "^4.3.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.12",
     "@gqty/cli": "^3.2.0",
+    "@storybook/addon-actions": "^6.4.22",
+    "@storybook/addon-essentials": "^6.4.22",
+    "@storybook/addon-interactions": "^6.4.22",
+    "@storybook/addon-links": "^6.4.22",
+    "@storybook/builder-webpack5": "^6.4.22",
+    "@storybook/manager-webpack5": "^6.4.22",
+    "@storybook/react": "^6.4.22",
+    "@storybook/testing-library": "^0.0.11",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@types/node": "17.0.33",
     "@types/react": "18.0.9",
     "@types/react-dom": "18.0.4",
     "autoprefixer": "^10.4.7",
+    "babel-loader": "^8.2.5",
     "eslint": "8.15.0",
     "eslint-config-next": "12.1.6",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-storybook": "^0.5.11",
     "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^7.0.0",
     "jest": "^28.1.0",
@@ -49,6 +62,7 @@
     "postcss": "^8.4.13",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.10",
+    "sb": "^6.4.22",
     "tailwindcss": "^3.0.24",
     "typescript": "4.6.4"
   }
