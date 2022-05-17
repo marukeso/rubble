@@ -71,3 +71,5 @@ package.json script 追加
 ### storybook
 
 gh-pages ブランチを作成して storybook を配置
+
+https://marukeso.github.io/rubble/
