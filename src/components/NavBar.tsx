@@ -110,20 +110,18 @@ export default function NavBar() {
   const router = useRouter()
   const links = data.map((link) => <MenuItem {...link} key={link.label} />)
   return (
-    <Navbar width={{ sm: 300, lg: 400, base: 100 }}>
-      <Navbar.Section grow mt="md">
-        {links}
-        {authenticated && (
-          <MenuItem
-            icon={<FaSignOutAlt />}
-            label="Sign Out"
-            action={async () => {
-              await signOut()
-              router.replace('/')
-            }}
-          />
-        )}
-      </Navbar.Section>
-    </Navbar>
+    <Navbar.Section grow mt="md">
+      {links}
+      {authenticated && (
+        <MenuItem
+          icon={<FaSignOutAlt />}
+          label="Sign Out"
+          action={async () => {
+            await signOut()
+            router.replace('/')
+          }}
+        />
+      )}
+    </Navbar.Section>
   )
 }
